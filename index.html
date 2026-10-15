@@ -1,1 +1,71 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>लोकल साथी</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Supabase JS Updated Mobile Library -->
+    <script src="https://jsdelivr.net"></script>
+</head>
+<body>
 
+    <!-- 1. लॉगइन स्क्रीन -->
+    <div id="login-screen" class="screen">
+        <div class="logo-container">
+            <div class="logo" style="font-size: 70px; margin-bottom: 10px;">📍▶️</div>
+            <h1 style="color: #007bff; margin: 0; font-size: 28px;">लोकल साथी</h1>
+            <p style="color: #666; margin-top: 5px; font-size: 14px;">आपका अपना लोकल वीडियो नेटवर्क</p>
+        </div>
+        <div class="form-group">
+            <input type="email" id="email" placeholder="ईमेल आईडी डालें">
+            <input type="password" id="password" placeholder="पासवर्ड डालें">
+            
+            <div class="terms-container">
+                <input type="checkbox" id="terms-checkbox">
+                <label for="terms-checkbox">मैं भारत सरकार के आईटी नियमों एवं <b>लोकल साथी</b> ऐप की नियम व शर्तों से अपनी मर्जी से सहमत हूँ।</label>
+            </div>
+            
+            <button id="login-btn" onclick="login()">लॉगइन / साइनअप</button>
+        </div>
+    </div>
+
+    <!-- 2. मुख्य ऐप स्क्रीन (होम फीड) -->
+    <div id="app-screen" class="screen hidden">
+        <header>
+            <button onclick="logout()">लॉगआउट</button>
+            <h3>📍 पास की वीडियो (5KM)</h3>
+            <button onclick="showProfile()">मेरी प्रोफाइल</button>
+        </header>
+
+        <!-- फिल्टर विकल्प -->
+        <div class="filters" style="padding: 10px; display: flex; gap: 10px;">
+            <select id="state-select" style="flex: 1;"><option value="">राज्य चुनें</option><option value="Gujarat">गुजरात</option><option value="Uttar Pradesh">उत्तर प्रदेश</option></select>
+            <button onclick="applyFilter()">खोजें</button>
+        </div>
+
+        <!-- वीडियो फीड -->
+        <div id="video-feed" class="feed">
+            <!-- सुपाबेस से वीडियो यहाँ दिखेंगे -->
+        </div>
+
+        <!-- नीचे का नेविगेशन बार -->
+        <nav class="bottom-nav">
+            <button onclick="uploadVideo()">➕ लाइव अपलोड</button>
+        </nav>
+    </div>
+
+    <!-- 3. प्रोफाइल स्क्रीन -->
+    <div id="profile-screen" class="screen hidden">
+        <header>
+            <button onclick="showHome()">⬅️ होम</button>
+            <h3>👤 मेरी प्रोफाइल</h3>
+        </header>
+        <div id="my-posts" class="feed">
+            <!-- यूजर के खुद के वीडियो यहाँ दिखेंगे -->
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
