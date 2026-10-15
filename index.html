@@ -13,55 +13,56 @@
     <!-- 1. लॉगइन स्क्रीन -->
     <div id="login-screen" class="screen">
         <div class="logo-container">
-            <div class="logo" style="font-size: 70px; margin-bottom: 10px;">📍▶️</div>
-            <h1 style="color: #007bff; margin: 0; font-size: 28px;">लोकल साथी</h1>
-            <p style="color: #666; margin-top: 5px; font-size: 14px;">आपका अपना लोकल वीडियो नेटवर्क</p>
+            <div class="logo" style="font-size: 70px; margin-bottom: 10px; text-align: center;">📍▶️</div>
+            <h1 style="color: #007bff; margin: 0; font-size: 28px; text-align: center;">लोकल साथी</h1>
+            <p style="color: #666; margin-top: 5px; font-size: 14px; text-align: center;">आपका अपना लोकल वीडियो नेटवर्क</p>
         </div>
-        <div class="form-group">
-            <input type="email" id="email" placeholder="ईमेल आईडी डालें">
-            <input type="password" id="password" placeholder="पासवर्ड डालें">
+        <div class="form-group" style="display: flex; flex-direction: column; gap: 15px; padding: 20px;">
+            <input type="email" id="email" placeholder="ईमेल आईडी डालें" style="padding: 12px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
+            <input type="password" id="password" placeholder="पासवर्ड डालें" style="padding: 12px; font-size: 16px; border-radius: 8px; border: 1px solid #ccc;">
             
-            <div class="terms-container">
+            <div class="terms-container" style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: #555;">
                 <input type="checkbox" id="terms-checkbox">
                 <label for="terms-checkbox">मैं भारत सरकार के आईटी नियमों एवं <b>लोकल साथी</b> ऐप की नियम व शर्तों से अपनी मर्जी से सहमत हूँ।</label>
             </div>
             
-            <button id="login-btn" onclick="login()">लॉगइन / साइनअप</button>
+            <button id="login-btn" onclick="login()" style="padding: 12px; background: #007bff; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer;">लॉगइन / साइनअप</button>
         </div>
     </div>
 
     <!-- 2. मुख्य ऐप स्क्रीन (होम फीड) -->
     <div id="app-screen" class="screen hidden">
-        <header>
-            <button onclick="logout()">लॉगआउट</button>
-            <h3>📍 पास की वीडियो (5KM)</h3>
-            <button onclick="showProfile()">मेरी प्रोफाइल</button>
+        <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: #007bff; color: white;">
+            <button onclick="logout()" style="background: none; border: 1px solid white; color: white; padding: 5px 10px; border-radius: 4px;">लॉगआउट</button>
+            <h3 style="margin: 0; font-size: 18px;">📍 पास की वीडियो (5KM)</h3>
+            <button onclick="showProfile()" style="background: none; border: 1px solid white; color: white; padding: 5px 10px; border-radius: 4px;">मेरी प्रोफाइल</button>
         </header>
 
         <!-- फिल्टर विकल्प -->
         <div class="filters" style="padding: 10px; display: flex; gap: 10px;">
-            <select id="state-select" style="flex: 1;"><option value="">राज्य चुनें</option><option value="Gujarat">गुजरात</option><option value="Uttar Pradesh">उत्तर प्रदेश</option></select>
-            <button onclick="applyFilter()">खोजें</button>
+            <select id="state-select" style="flex: 1; padding: 10px; border-radius: 6px;"><option value="">राज्य चुनें</option><option value="Gujarat">गुजरात</option><option value="Uttar Pradesh">उत्तर प्रदेश</option></select>
+            <button onclick="applyFilter()" style="padding: 10px 15px; background: #007bff; color: white; border: none; border-radius: 6px;">खोजें</button>
         </div>
 
         <!-- वीडियो फीड -->
-        <div id="video-feed" class="feed">
+        <div id="video-feed" class="feed" style="padding: 15px; display: flex; flex-direction: column; gap: 20px;">
             <!-- सुपाबेस से वीडियो यहाँ दिखेंगे -->
         </div>
 
         <!-- नीचे का नेविगेशन बार -->
-        <nav class="bottom-nav">
-            <button onclick="uploadVideo()">➕ लाइव अपलोड</button>
+        <nav class="bottom-nav" style="position: fixed; bottom: 0; width: 100%; max-width: 500px; background: white; display: flex; justify-content: center; padding: 10px 0; box-shadow: 0 -2px 10px rgba(0,0,0,0.1);">
+            <button onclick="uploadVideo()" style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 20px; font-weight: bold;">➕ लाइव अपलोड</button>
         </nav>
     </div>
 
     <!-- 3. प्रोफाइल स्क्रीन -->
     <div id="profile-screen" class="screen hidden">
-        <header>
-            <button onclick="showHome()">⬅️ होम</button>
-            <h3>👤 मेरी प्रोफाइल</h3>
+        <header style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; background: #343a40; color: white;">
+            <button onclick="showHome()" style="background: none; border: 1px solid white; color: white; padding: 5px 10px; border-radius: 4px;">⬅️ होम</button>
+            <h3 style="margin: 0; font-size: 18px;">👤 मेरी प्रोफाइल</h3>
+            <div style="width: 50px;"></div>
         </header>
-        <div id="my-posts" class="feed">
+        <div id="my-posts" class="feed" style="padding: 15px; display: flex; flex-direction: column; gap: 20px;">
             <!-- यूजर के खुद के वीडियो यहाँ दिखेंगे -->
         </div>
     </div>
